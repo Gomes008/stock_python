@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adiciona</title>
+</head>
+<body>
+    <div>
+        <form action="submit" method="POST"> {% csrf_token %}
+            <div>
+                <label>Nome do Produto</label>
+                <input type="text" name="id_produto" value="{{ produto.id }}" hidden>
+                <input type="text" name="nome" value="{{ produto.nome }}" ><br>
+
+                <label>Quantidade</label>
+                <input type="number" name="quantidade" value="{{ produto.quantidade }}" ><br>
+
+                <label>Valor</label>
+                <input type="number" name="valor" value="{{ produto.valor }}" ><br>
+
+                <label>Responsavel</label>
+                <select name="responsavel">
+                    {% if produto.responsavel %}
+                    <option value="{{ user.id }}">{{ user.username }}</option>
+                    {% endif %}
+                    <option value="">--------</option>
+                    {% for usuario in usuarios %}
+                    <option value="{{ usuario.id }}">{{ usuario.username }}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+
+                <button type="submit">Salvar</button>
+                <a href="/">
+                    <button type="button">Voltar</button>
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

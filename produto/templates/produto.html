@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+</head>
+<body>
+    <h1>Meus Productos</h1>
+    <a href="adiciona">
+        <button type="button">Adicionar</button>
+    </a>
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Quantidade</td>
+                    <td>Valor Unitário</td>
+                    <td>Responsavel</td>
+                    <td>Valor Total</td>
+                    <td>Accoes</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for produto in produtos %}
+                <tr>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.quantidade }}</td>
+                    <td>{{ produto.valor }}</td>
+                    <td>{{ produto.responsavel }}</td>
+                    <td></td>
+                    <td><a href="adiciona/?id={{ produto.id }}">editar</a> <a href="apaga/{{ produto.id }}">Apagar</a> </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
